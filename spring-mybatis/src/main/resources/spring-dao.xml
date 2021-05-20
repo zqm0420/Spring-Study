@@ -17,5 +17,13 @@
         <property name="configLocation" value="classpath:mybatis-config.xml"/>
     </bean>
 
+    <!--使用SqlSessionTemplate-->
+    <bean class="org.mybatis.spring.SqlSessionTemplate" id="sqlSessionTemplate">
+        <constructor-arg index="0" ref="sqlSessionFactory"/>
+    </bean>
+
+    <bean class="com.zqm.dao.UserMapperImpl" id="userMapper">
+        <property name="sqlSession" ref="sqlSessionTemplate"/>
+    </bean>
 
 </beans>
